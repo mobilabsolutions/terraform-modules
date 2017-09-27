@@ -1,0 +1,8 @@
+name = "testenvironment"
+rancher_api_url = "https://rancher.example.com"
+rancher_access_key = "..."
+rancher_secret_key = "..."
+registry_address = "..."
+registry_email = "..."
+registry_credential_public = "..."
+registry_credential_private = "..."
