@@ -12,7 +12,6 @@ variable orchestration {
 variable registry_address {
   type        = "string"
   description = "(Required) The server address for the registry."
-  default     = "https://hub.mblb.net"
 }
 
 variable registry_email {

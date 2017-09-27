@@ -53,8 +53,6 @@ variable subnet_name {
 
 variable admin_username {
   type = "string"
-
-  default = "mblb"
 }
 
 variable count {

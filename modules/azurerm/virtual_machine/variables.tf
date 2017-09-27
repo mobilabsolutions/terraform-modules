@@ -117,7 +117,6 @@ variable image_version {
 variable admin_username {
   type        = "string"
   description = "(Required) Admin account username. Can't be set as root or admin."
-  default     = "mblb"
 }
 
 variable public_key {

@@ -23,7 +23,6 @@ variable version {
 variable administrator_login {
   type        = "string"
   description = "(Required) The administrator login name for the new server."
-  default     = "mblb"
 }
 
 variable administrator_login_password {
