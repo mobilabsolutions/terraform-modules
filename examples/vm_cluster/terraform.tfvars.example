@@ -1,0 +1,33 @@
+azure_subscription_id = "..."
+azure_client_id       = "..."
+azure_client_secret   = "..."
+azure_tenant_id       = "..."
+rancher_api_url = "..."
+rancher_access_key = "..."
+rancher_secret_key = "..."
+name = "testranchercluster"
+location = "West Europe"
+address_space = "10.16.0.0/18"
+subnets = { 
+  "default" = "10.16.2.0/24"
+}
+network_security_rules = [
+    "ssh,100,Inbound,Allow,Tcp,*,22,*,*", 
+    "http,200,Inbound,Allow,Tcp,*,80,*,*",
+    "https,300,Inbound,Allow,Tcp,*,443,*,*",
+    "rancher-500,400,Inbound,Allow,Udp,*,500,*,*",
+    "rancher-4500,410,Inbound,Allow,Udp,*,4500,*,*"
+  ]
+load_balancing_rules = [
+    "main-http,Tcp,80,80,", 
+    "main-https,Tcp,443,443,"
+  ]
+count = "2"
+public_key_path = "..."
+subnet_name = "default"
+azure_sa_name = "..."
+azure_sa_key = "..."
+cloud_init_file = "rancherhost.conf"
+ssh_users_file = "sshusers"
+rancher_environment_id = "..."
+admin_username = "..."
