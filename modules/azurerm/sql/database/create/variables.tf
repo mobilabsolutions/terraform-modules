@@ -19,24 +19,6 @@ variable server_name {
   description = "(Required) The name of the SQL Server on which to create the database."
 }
 
-variable create_mode {
-  type        = "string"
-  description = "(Optional) Specifies the type of database to create. Defaults to Default. Valid values are: Default, Copy, Restore, Recovery, PointInTimeRestore, OnlineSecondary, NonReadableSecondary"
-  default     = "Default"
-}
-
-variable source_database_id {
-  type        = "string"
-  description = "(Optional) The URI of the source database if create_mode value is not Default."
-  default     = ""
-}
-
-variable restore_point_in_time {
-  type        = "string"
-  description = "(Optional) The point in time for the restore. Only applies if create_mode is PointInTimeRestore e.g. 2013-11-08T22:00:40Z"
-  default     = ""
-}
-
 variable edition {
   type        = "string"
   description = "(Optional) The edition of the database to be created. Applies only if create_mode is Default. Valid values are: Basic, Standard, Premium, or DataWarehouse."
@@ -59,12 +41,6 @@ variable requested_service_objective_name {
   type        = "string"
   description = "(Optional) Use requested_service_objective_name to set the performance level for the database. Valid values are: Basic, S0, S1, S2, S3, P1, P2, P4, P6, P11, P15 and ElasticPool."
   default     = "S0"
-}
-
-variable source_database_deletion_date {
-  type        = "string"
-  description = "(Optional) The deletion date time of the source database. Only applies to deleted databases where create_mode is Restore."
-  default     = ""
 }
 
 variable elastic_pool_name {
