@@ -6,7 +6,7 @@ Registration token is used to connect Rancher Hosts to Rancher Server.
 ### Example
 ```hcl
 module "rancher_register" {
-  source         = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/rancher/registration"
+  source         = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.0.0//modules/rancher/registration"
   name           = "${var.name}"
   environment_id = "${var.rancher_environment_id}"
 }

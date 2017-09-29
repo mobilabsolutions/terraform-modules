@@ -6,7 +6,7 @@ Resource Group is a container that holds related resources for an Azure solution
 ### Example
 ```hcl
 module "resource_group" {
-  source   = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/resource_group"
+  source   = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.0.0//modules/azurerm/resource_group"
   name     = "${var.name}"
   location = "${var.location}"
   tags     = "${var.tags}"

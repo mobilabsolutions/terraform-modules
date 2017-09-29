@@ -6,7 +6,7 @@ Queue Storage provides reliable messaging for workflow processing and for commun
 ### Example
 ```hcl
 module "storage_queue" {
-  source               = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/storage/queue"
+  source               = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.0.0//modules/azurerm/storage/queue"
   name                 = "${var.name}"
   resource_group_name  = "${var.resource_group_name}"
   storage_account_name = "${var.storage_account_name}"
