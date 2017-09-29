@@ -8,5 +8,5 @@ resource "azurerm_availability_set" "as" {
   platform_fault_domain_count  = "${var.platform_fault_domain_count}"
   managed                      = "${var.managed}"
 
-  tags                         = "${merge(var.tags, map("resourceType", "as"))}"
+  tags = "${merge(var.tags, map("resourceType", "as"))}"
 }
