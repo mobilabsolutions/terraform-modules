@@ -6,7 +6,7 @@ provider "azurerm" {
 }
 
 module "single_vm" {
-  source                 = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/compute/single"
+  source                 = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/compute/single"
   name                   = "${var.name}"
   location               = "${var.location}"
   subnets                = "${var.subnets}"

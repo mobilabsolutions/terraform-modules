@@ -12,13 +12,13 @@ provider "rancher" {
 }
 
 module "rancher_register" {
-  source         = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/rancher/registration"
+  source         = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/rancher/registration"
   name           = "${var.name}"
   environment_id = "${var.rancher_environment_id}"
 }
 
 module "vm_cluster" {
-  source                 = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/compute/cluster"
+  source                 = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/compute/cluster"
   name                   = "${var.name}"
   location               = "${var.location}"
   subnets                = "${var.subnets}"
@@ -37,7 +37,7 @@ module "vm_cluster" {
 }
 
 module "rancher_host" {
-  source         = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/rancher/host"
+  source         = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/rancher/host"
   name           = "${var.name}"
   count          = "${var.count}"
   environment_id = "${var.rancher_environment_id}"

@@ -7,7 +7,7 @@ Unlike the Internet facing load balancer, the internal load balancer (ILB) direc
 ### Example
 ```hcl
 module "load_balancer" {
-  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/load_balancer/private"
+  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/load_balancer/private"
   name                = "${var.name}"
   location            = "${var.location}"
   resource_group_name = "${module.resource_group.name}"

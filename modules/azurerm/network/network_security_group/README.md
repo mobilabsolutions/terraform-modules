@@ -8,7 +8,7 @@ NSGs can be assigned to subnets or individual NICs. Where NSGs are assigned to b
 ### Example
 ```hcl
 module "network_security_group" {
-  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/network/network_security_group"
+  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/network/network_security_group"
   name                = "${var.name}"
   location            = "${var.location}"
   resource_group_name = "${module.resource_group.name}"

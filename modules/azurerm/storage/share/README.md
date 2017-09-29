@@ -6,7 +6,7 @@ File Storage offers shared storage for legacy applications using the standard SM
 ### Example
 ```hcl
 module "storage_share" {
-  source               = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/storage/share"
+  source               = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/storage/share"
   name                 = "${var.name}"
   resource_group_name  = "${var.resource_group_name}"
   storage_account_name = "${var.storage_account_name}"

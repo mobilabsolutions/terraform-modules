@@ -1,12 +1,12 @@
 ## SQL Database
-Create an Azure SQL Database.
+Create or update an Azure SQL Database.
 
 Azure SQL Database is a relational database-as-a service using the Microsoft SQL Server Engine. SQL Database is a high-performance, reliable, and secure database you can use to build data-driven applications and websites in the programming language of your choice, without needing to manage infrastructure.
 
 ### Example
 ```hcl
 module "sql_database" {
-  source                           = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/sql/database"
+  source                           = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/sql/database"
   name                             = "${var.name}"
   resource_group_name              = "${var.resource_group_name}"
   location                         = "${var.location}"

@@ -10,7 +10,7 @@ To control the flow of traffic, you define load balancer rules for specific port
 ### Example
 ```hcl
 module "load_balancer" {
-  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/load_balancer/public"
+  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/load_balancer/public"
   name                = "${var.name}"
   location            = "${var.location}"
   resource_group_name = "${module.resource_group.name}"

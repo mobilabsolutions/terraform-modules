@@ -6,7 +6,7 @@ An Azure storage account provides a unique namespace to store and access your Az
 ### Example
 ```hcl
 module "storage_account" {
-  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/storage/account"
+  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/storage/account"
   account_name        = "${var.name}"
   location            = "${var.location}"
   resource_group_name = "${var.resource_group_name}"

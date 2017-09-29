@@ -6,7 +6,7 @@ Availability Sets are used within Microsoft Azure to ensure that virtual machine
 ### Example
 ```hcl
 module "availability_set" {
-  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/availability_set"
+  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/availability_set"
   name                = "${var.name}"
   resource_group_name = "${module.resource_group.name}"
   tags                = "${var.tags}"

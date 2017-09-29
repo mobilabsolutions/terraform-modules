@@ -6,13 +6,13 @@ provider "azurerm" {
 }
 
 module "resource_group" {
-  source   = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/resource_group"
+  source   = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/resource_group"
   name     = "${var.name}"
   location = "${var.location}"
 }
 
 module "sa" {
-  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/storage/account"
+  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/storage/account"
   account_name        = "${var.name}"
   resource_group_name = "${module.resource_group.name}"
 }
