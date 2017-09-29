@@ -5,7 +5,7 @@ Create a Rancher Registy and a Rancher Registry Credential resource.
 ### Example
 ```hcl
 module rancher_registry {
-  source                      = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/rancher/registry"
+  source                      = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/rancher/registry"
   name                        = "${var.name}"
   environment_id              = "${var.rancher_environment_id}"
   registry_address            = "${var.registry_address}"
