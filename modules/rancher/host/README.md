@@ -7,7 +7,7 @@ Hosts are the most basic unit of resource within Rancher and is represented as a
 ### Example
 ```hcl
 module "rancher_host" {
-  source         = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/rancher/host"
+  source         = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.0.0//modules/rancher/host"
   name           = "${var.name}"
   count          = "${var.count}"
   environment_id = "${var.rancher_environment_id}"

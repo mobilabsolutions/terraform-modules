@@ -6,7 +6,7 @@ Azure SQL Database is a relational database-as-a service using the Microsoft SQL
 ### Example
 ```hcl
 module "sql_database" {
-  source                           = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/sql/database"
+  source                           = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.0.0//modules/azurerm/sql/database"
   name                             = "${var.name}"
   resource_group_name              = "${var.resource_group_name}"
   location                         = "${var.location}"

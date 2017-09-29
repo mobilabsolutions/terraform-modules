@@ -7,7 +7,7 @@ Certificates loaded in the environment can be used for SSL termination of a load
 ### Example
 ```hcl
 module rancher_certificate {
-  source                      = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/rancher/certificate"
+  source                      = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.0.0//modules/rancher/certificate"
   name                        = "${var.name}"
   ssl_public                  = "${file(var.ssl_public)}"
   ssl_private                 = "${file(var.ssl_private)}"

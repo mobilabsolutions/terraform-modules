@@ -6,7 +6,7 @@ Rancher has introduced the ability to create named secrets to be used in contain
 ### Example
 ```hcl
 module "rancher_secret" {
-  source         = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/rancher/secret"
+  source         = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.0.0//modules/rancher/secret"
   name           = "${var.name}-db-pw"
   description    = "${var.name} DB password"
   environment_id = "${var.rancher_environment_id}"

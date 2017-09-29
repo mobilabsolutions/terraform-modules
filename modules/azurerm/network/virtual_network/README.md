@@ -6,7 +6,7 @@ An Azure virtual network (VNet) is a representation of your own network in the c
 ### Example
 ```hcl
 module "virtual_network" {
-  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/network/virtual_network"
+  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.0.0//modules/azurerm/network/virtual_network"
   name                = "${var.name}"
   location            = "${var.location}"
   resource_group_name = "${module.resource_group.name}"

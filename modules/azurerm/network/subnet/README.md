@@ -6,7 +6,7 @@ Subnets represent network segments within the IP space defined by the virtual ne
 ### Example
 ```hcl
 module "subnet" {
-  source               = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/network/subnet"
+  source               = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.0.0//modules/azurerm/network/subnet"
   resource_group_name  = "${module.resource_group.name}"
   virtual_network_name = "${module.virtual_network.name}"
   subnets              = "${var.subnets}"
