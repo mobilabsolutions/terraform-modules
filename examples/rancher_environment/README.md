@@ -1,7 +1,7 @@
 ## Create Rancher Environment
 Create a Rancher Environment, a Rancher Registy and a Rancher Registry Credential resource.
 
-`rancher/environment` module will be used for this demo which will require configuration of `rancher` provider. More information about module and provider can be found on their respective pages. 
+`rancher/environment` and `rancher/registry` modules will be used for this demo which will require configuration of `rancher` provider. More information about modules and provider can be found on their respective pages. 
 
 We have created a vars.tf file to interpolate variable values with help of a terraform.tfvars file. More information about required variables can be obtained from module documentation and provider page. You have to create it by yourself and provide all values it requires. You can use terraform.tfvars.example file as a starting point. Also an example of terraform.tfvars file can be seen below.
 

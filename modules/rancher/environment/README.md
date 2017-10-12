@@ -1,5 +1,5 @@
 ## Environment
-Create a Rancher Environment, a Rancher Registy and a Rancher Registry Credential resource.
+Create a Rancher Environment resource.
 
 Rancher supports grouping resources into multiple environments. Each environment starts with a set of infrastructure services defined by the environment template used to create the environment. Each environment has its own set of resources, and is owned by one or more users or groups.
 
@@ -8,12 +8,9 @@ All hosts and any Rancher resources, such as containers, infrastructure services
 ### Example
 ```hcl
 module rancher_environment {
-  source                      = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.0.0//modules/rancher/environment"
-  name                        = "${var.name}"
-  registry_address            = "${var.registry_address}"
-  registry_email              = "${var.registry_email}"
-  registry_credential_public  = "${var.registry_credential_public}"
-  registry_credential_private = "${var.registry_credential_private}"
+  source        = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/rancher/environment"
+  name          = "${var.name}"
+  orchestration = "${var.orchestration}"
 }
 ```
 
@@ -23,10 +20,8 @@ The following input variables are supported:
 Name | Description | Type 
 ----------------- | --------- | -------- 
 name  | (Required) The name of the environment. | string 
-registry_address | (Required) The server address for the registry. | string 
-registry_email | (Required) The email of the account. | string
-registry_credential_public | (Required) The public value (user name) of the account. | string
-registry_credential_private | (Required) The secret value (password) of the account. | string
+orchestration | (Optional) Must be one of cattle, swarm, mesos, windows or kubernetes. | string 
+description | (Optional) The description of the environment. | string 
 
 Default values will be overriden if they are provided as input variables. Usually variables marked as (Required) does not have default values. Check variables.tf file for more information.
 

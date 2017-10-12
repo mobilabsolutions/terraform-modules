@@ -6,7 +6,7 @@ Table Storage stores structured datasets. Table storage is a NoSQL key-attribute
 ### Example
 ```hcl
 module "storage_table" {
-  source               = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.0.0//modules/azurerm/storage/table"
+  source               = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/storage/table"
   name                 = "${var.name}"
   resource_group_name  = "${var.resource_group_name}"
   storage_account_name = "${var.storage_account_name}"

@@ -192,7 +192,7 @@ Modules in Terraform are self-contained packages of Terraform configurations tha
 A simple module configuration looks like the following:
 ```hcl
 module "resource_group" {
-  source = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.0.0//modules/azurerm/resource_group"
+  source = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/resource_group"
   name = "${var.name}"
   location = "${var.location}"
 }
