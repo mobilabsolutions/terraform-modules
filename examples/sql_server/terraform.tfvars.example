@@ -6,3 +6,4 @@ name = "testsqlserver"
 location = "West Europe"
 administrator_login = "..."
 administrator_login_password = "..."
+rule_list = ["all,0.0.0.0,255.255.255.255"]

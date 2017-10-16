@@ -13,6 +13,7 @@ module "sql_server" {
   version                      = "${var.version}"
   administrator_login          = "${var.administrator_login}"
   administrator_login_password = "${var.administrator_login_password}"
+  rule_list                    = "${var.rule_list}"
   tags                         = "${var.tags}"
 }
 
