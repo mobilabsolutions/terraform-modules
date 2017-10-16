@@ -1,0 +1,8 @@
+azure_subscription_id = "..."
+azure_client_id       = "..."
+azure_client_secret   = "..."
+azure_tenant_id       = "..."
+name = "testsqlserver"
+location = "West Europe"
+administrator_login = "..."
+administrator_login_password = "..."
