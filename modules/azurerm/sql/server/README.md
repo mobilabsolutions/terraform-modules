@@ -25,7 +25,7 @@ resource_group_name | (Required) The name of the resource group in which to crea
 location | (Required) Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. | string
 version | (Required) The version for the new server. Valid values are: 2.0 (for v11 server) and 12.0 (for v12 server). | string
 administrator_login | (Required) The administrator login name for the new server. | string
-administrator_login_password | (Required) The password for the new AdministratorLogin. | string
+administrator_login_password | (Required) The password for the new AdministratorLogin. see [here](https://docs.microsoft.com/en-us/sql/relational-databases/security/password-policy) for more information about password complexity requirements. | string
 rule_list | (Optional) Azure Sql Server Firewall rules. Passed in a as a list of comma deliniated string lists in a specific format. | list
 tags | (Optional) A mapping of tags to assign to the resource. | map
 
