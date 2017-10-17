@@ -1,0 +1,9 @@
+azure_subscription_id = "..."
+azure_client_id       = "..."
+azure_client_secret   = "..."
+azure_tenant_id       = "..."
+name = "testsqldb"
+location = "West Europe"
+administrator_login = "..."
+administrator_login_password = "..."
+rule_list = ["all,0.0.0.0,255.255.255.255"]
