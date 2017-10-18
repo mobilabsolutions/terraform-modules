@@ -34,7 +34,7 @@ variable sku_tier {
 
 variable version {
   type        = "string"
-  description = " (Required) Specifies the version of MySQL to use. Valid values are 5.6 and 5.7. Changing this forces a new resource to be created."
+  description = "(Required) Specifies the version of MySQL to use. Valid values are 5.6 and 5.7. Changing this forces a new resource to be created."
   default     = "5.7"
 }
 
