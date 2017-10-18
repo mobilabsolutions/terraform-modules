@@ -16,11 +16,10 @@ module "sql_server" {
   name                         = "${var.name}"
   resource_group_name          = "${module.resource_group.name}"
   location                     = "${var.location}"
-  version                      = "${var.version}"
+  version                      = "${var.sql_server_version}"
   administrator_login          = "${var.administrator_login}"
   administrator_login_password = "${var.administrator_login_password}"
   rule_list                    = "${var.rule_list}"
-  tags                         = "${var.sql_server_tags}"
 }
 
 module "create_sql_db" {
@@ -29,12 +28,8 @@ module "create_sql_db" {
   resource_group_name              = "${module.resource_group.name}"
   location                         = "${var.location}"
   server_name                      = "${module.sql_server.name}"
-  edition                          = "${var.edition}"
-  collation                        = "${var.collation}"
-  max_size_bytes                   = "${var.max_size_bytes}"
+  edition                          = "${var.sql_database_edition}"
   requested_service_objective_name = "${var.requested_service_objective_name}"
-  elastic_pool_name                = "${var.elastic_pool_name}"
-  tags                             = "${var.sql_db_tags}"
 }
 
 output "sql_server_public_fqdn" {
