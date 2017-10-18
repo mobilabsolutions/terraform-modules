@@ -37,38 +37,10 @@ variable availability_set_id {
   default     = ""
 }
 
-variable subnet_ids {
-  type        = "map"
-  description = "(Required) Subnets for the network interface"
-}
-
-variable subnet_cidr {
-  type        = "string"
-  description = "(Required) CIDR of the Subnet for the network interface"
-}
-
-variable private_ip_address_allocation {
-  type        = "string"
-  description = "(Optional) IP assignment for the network interface. Can be static or dynamic: if using static please set private_ip_address"
-  default     = "dynamic"
-}
-
-variable private_ip_addresses {
-  type        = "list"
-  description = "(Optional) Private IP address for the network interface. Required if private_ip_address_allocation is static"
-  default     = [""]
-}
-
 variable network_security_group_id {
   type        = "string"
   description = "(Optional) Network security group id to attach to instance"
   default     = ""
-}
-
-variable "lb_pool_ids" {
-  type        = "list"
-  description = "(Optional) Load balancer pool ids"
-  default     = [""]
 }
 
 variable vm_size {

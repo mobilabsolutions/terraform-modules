@@ -1,0 +1,15 @@
+azure_subscription_id = "..."
+azure_client_id       = "..."
+azure_client_secret   = "..."
+azure_tenant_id       = "..."
+name = "testnetwork"
+location = "West Europe"
+address_space = "10.16.0.0/18"
+subnets = { 
+  "default" = "10.16.2.0/24"
+}
+security_group_rule_list = [
+    "ssh,100,Inbound,Allow,Tcp,*,22,*,*", 
+    "http,200,Inbound,Allow,Tcp,*,80,*,*",
+    "https,300,Inbound,Allow,Tcp,*,443,*,*"
+  ]
