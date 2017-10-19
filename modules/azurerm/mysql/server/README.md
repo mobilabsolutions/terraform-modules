@@ -32,10 +32,10 @@ version | (Required) Specifies the version of MySQL to use. Valid values are 5.6
 administrator_login | (Required) The Administrator Login for the MySQL Server. Changing this forces a new resource to be created. | string
 administrator_login_password | (Required) The Password associated with the administrator_login for the MySQL Server. | string
 ssl_enforcement | (Required) Specifies if SSL should be enforced on connections. Possible values are Enabled and Disabled. | string
-rule_list | (Optional) Azure Sql Server Firewall rules. Passed in a as a list of comma deliniated string lists in a specific format. | list
+rule_list | (Optional) Azure Sql Server Firewall rules. Passed in a as a list of comma delimited string lists in a specific format. | list
 tags | (Optional) A mapping of tags to assign to the resource. | map
 
-Variables that must appear rule_list:
+Variables that must appear in rule_list:
 
 Name | Description | Order 
 ----------------- | --------- | -------- 
@@ -50,7 +50,7 @@ rule_list = ["all,0.0.0.0,255.255.255.255"]
 ```
 
 
-Default values will be overriden if they are provided as input variables. Usually variables marked as (Required) does not have default values. Check variables.tf file for more information.
+Default values will be overriden if they are provided as input variables. Usually variables marked as (Required) do not have default values. Check variables.tf file for more information.
 
 
 #### Output Reference

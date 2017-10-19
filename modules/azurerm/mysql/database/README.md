@@ -1,7 +1,7 @@
 ## SQL Database
 Create or update a Azure Database for MySQL.
 
-Azure Database for MySQL is a relational database service based on the open source MySQL Server engine. It is a fully managed database as a service offering capable of handing mission-critical workload with predictable performance and dynamic scalability. 
+Azure Database for MySQL is a relational database service based on the open source MySQL Server engine. It is a fully managed database as a service offering capable of handling mission-critical workload with predictable performance and dynamic scalability. 
 
 ### Example
 ```hcl
@@ -24,7 +24,7 @@ server_name | (Required) Specifies the name of the MySQL Server. Changing this f
 charset | (Required) Specifies the Charset for the MySQL Database, which needs to be a valid MySQL Charset. Changing this forces a new resource to be created. | string
 collation | (Required) Specifies the Collation for the MySQL Database, which needs to be a valid MySQL Collation. Changing this forces a new resource to be created. | string
 
-Default values will be overriden if they are provided as input variables. Usually variables marked as (Required) does not have default values. Check variables.tf file for more information.
+Default values will be overriden if they are provided as input variables. Usually variables marked as (Required) do not have default values. Check variables.tf file for more information.
 
 #### Output Reference
 The following output variables are supported:

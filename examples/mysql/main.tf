@@ -39,5 +39,5 @@ output "public_fqdn" {
 }
 
 output "mysql_database_name" {
-  value = "${module.mysql_server.name}"
+  value = "${module.mysql_database.name}"
 }
