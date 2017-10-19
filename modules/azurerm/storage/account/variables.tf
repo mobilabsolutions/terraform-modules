@@ -14,10 +14,16 @@ variable account_name {
   description = "(Required) Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group."
 }
 
-variable account_type {
+variable account_tier {
   type        = "string"
-  description = "(Required) Storage acount type (i.e.,  Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS)"
-  default     = "Standard_LRS"
+  description = "(Required) Defines the Tier to use for this storage account. Valid options are Standard and Premium. Changing this forces a new resource to be created."
+  default     = "Standard"
+}
+
+variable account_replication_type {
+  type        = "string"
+  description = "(Required) Defines the type of replication to use for this storage account. Valid options are LRS, GRS, RAGRS and ZRS."
+  default     = "LRS"
 }
 
 variable tags {

@@ -40,15 +40,15 @@ resource "azurerm_network_security_rule" "nsr" {
 }
 
 resource "azurerm_public_ip" "pi" {
-  count = "${var.network_interface_count}"
+  count = "${var.count}"
 
   # Resource location
   location            = "${var.location}"
   resource_group_name = "${var.resource_group_name}"
 
   # Public IP Information
-  name                         = "${lower(var.name)}-ip-vm-${format(var.network_interface_count_format, var.network_interface_count_offset + count.index + 1)}"
-  domain_name_label            = "${lower(var.name)}-${format(var.network_interface_count_format, var.network_interface_count_offset + count.index + 1)}"
+  name                         = "${lower(var.name)}-ip-vm-${format(var.count_format, var.count_offset + count.index + 1)}"
+  domain_name_label            = "${lower(var.name)}-${format(var.count_format, var.count_offset + count.index + 1)}"
   public_ip_address_allocation = "dynamic"
 
   tags = "${merge(var.public_ip_tags, map("resourceType", "pi"))}"
@@ -56,21 +56,21 @@ resource "azurerm_public_ip" "pi" {
 
 # All VMs require a network interface
 resource "azurerm_network_interface" "ni" {
-  count = "${var.network_interface_count}"
+  count = "${var.count}"
 
   # Resource location
   location            = "${var.location}"
   resource_group_name = "${var.resource_group_name}"
 
   # NIC Name Information
-  name                      = "${var.name}-ni-vm-${format(var.network_interface_count_format, var.network_interface_count_offset + count.index + 1)}"
-  internal_dns_name_label   = "${var.name}-${format(var.network_interface_count_format, var.network_interface_count_offset + count.index + 1)}"
+  name                      = "${var.name}-ni-vm-${format(var.count_format, var.count_offset + count.index + 1)}"
+  internal_dns_name_label   = "${var.name}-${format(var.count_format, var.count_offset + count.index + 1)}"
   network_security_group_id = "${azurerm_network_security_group.nsg.id}"
 
   ip_configuration {
-    name                                    = "${var.name}-${format(var.network_interface_count_format, var.network_interface_count_offset + count.index + 1)}"
-    subnet_id                               = "${element("${azurerm_subnet.sb.*.id}", count.index)}"
-    private_ip_address_allocation           = "dynamic"
+    name                                    = "${var.name}-${format(var.count_format, var.count_offset + count.index + 1)}"
+    subnet_id                               = "${lookup(zipmap(azurerm_subnet.sb.*.name, azurerm_subnet.sb.*.id), var.network_interface_subnet_name)}"
+    private_ip_address_allocation           = "${var.private_ip_address_allocation}"
     public_ip_address_id                    = "${element(azurerm_public_ip.pi.*.id, count.index)}"
     load_balancer_backend_address_pools_ids = ["${compact(var.lb_pool_ids)}"]
   }

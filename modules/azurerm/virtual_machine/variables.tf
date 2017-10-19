@@ -43,6 +43,11 @@ variable network_security_group_id {
   default     = ""
 }
 
+variable network_interface_ids {
+  type        = "list"
+  description = "(Required) List of network network interface ids"
+}
+
 variable vm_size {
   type        = "string"
   description = "(Required) Size of the VM. See https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-windows-sizes/"
@@ -102,37 +107,9 @@ variable os_disk_name {
   default     = "osdisk"
 }
 
-variable cloud_init {
+variable cloud_init_rendered {
   type        = "string"
-  description = "(Required) cloud-init file contents"
-}
-
-variable ssh_users {
-  type        = "string"
-  description = "(Required) ssh users file contents"
-}
-
-variable azure_sa_name {
-  type        = "string"
-  description = "(Optional) Storage account name of Azure Storage Account which keeps Rancher data"
-  default     = ""
-}
-
-variable azure_sa_key {
-  type        = "string"
-  description = "(Optional) Storage account key of Azure Storage Account which keeps Rancher data"
-  default     = ""
-}
-
-variable driver_version {
-  type        = "string"
-  description = "(Optional) azurefile-driverdockervolume version. See https://github.com/Azure/azurefile-dockervolumedriver"
-  default     = "v0.5.1"
-}
-
-variable rancher_host {
-  type        = "string"
-  description = "(Optional) Rancher host connect command with rancher/agent"
+  description = "(Optional) Rendered cloud-init file contents"
   default     = ""
 }
 

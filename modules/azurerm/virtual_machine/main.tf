@@ -6,25 +6,13 @@ resource "azurerm_storage_container" "osdisk" {
   container_access_type = "private"
 }
 
-data "template_file" "init" {
-  template = "${var.cloud_init}"
-
-  vars {
-    ssh_users      = "${var.ssh_users}"
-    azure_sa_name  = "${var.azure_sa_name}"
-    azure_sa_key   = "${var.azure_sa_key}"
-    driver_version = "${var.driver_version}"
-    rancher_host   = "${var.rancher_host}"
-  }
-}
-
 resource "azurerm_virtual_machine" "vm" {
   count                 = "${var.count}"
   name                  = "${var.name}-vm-${format(var.count_format, var.count_offset + count.index + 1)}"
   location              = "${var.location}"
   resource_group_name   = "${var.resource_group_name}"
-  network_interface_ids = ["${element(azurerm_network_interface.ni.*.id, count.index)}"]
   vm_size               = "${var.vm_size}"
+  network_interface_ids = ["${element(var.network_interface_ids, count.index)}"]
   availability_set_id   = "${var.availability_set_id}"
 
   storage_image_reference {
@@ -45,7 +33,7 @@ resource "azurerm_virtual_machine" "vm" {
     computer_name  = "${var.name}-${format(var.count_format, var.count_offset+count.index+1)}"
     admin_username = "${var.admin_username}"
     admin_password = "${uuid()}"
-    custom_data    = "${data.template_file.init.rendered}"
+    custom_data    = "${var.cloud_init_rendered}"
   }
 
   os_profile_linux_config {

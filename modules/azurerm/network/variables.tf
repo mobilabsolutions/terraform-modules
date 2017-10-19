@@ -49,19 +49,19 @@ variable security_group_tags {
 }
 
 #Network Interface Specific Settings
-variable network_interface_count {
+variable count {
   type        = "string"
   description = "(Required) Number of network interfaces per VM."
   default     = "1"
 }
 
-variable network_interface_count_offset {
+variable count_offset {
   type        = "string"
   description = "(Optional) Start network interface numbering from this value. If you set it to 100, servers will be numbered -101, 102,..."
   default     = "0"
 }
 
-variable network_interface_count_format {
+variable count_format {
   type        = "string"
   description = "(Optional) network interface numbering format (-01, -02, etc.) in printf format"
   default     = "%d"
@@ -79,9 +79,21 @@ variable network_interface_tags {
   default     = {}
 }
 
+variable network_interface_subnet_name {
+  type        = "string"
+  description = ""
+  default     = "default"
+}
+
 #Public IP Specific Settings
 variable public_ip_tags {
   type        = "map"
   description = "(Optional) A mapping of tags to assign to the resource."
   default     = {}
+}
+
+variable private_ip_address_allocation {
+  type        = "string"
+  description = "(Optional) IP assignment for the network interface. Can be static or dynamic: if using static please set private_ip_address"
+  default     = "dynamic"
 }
