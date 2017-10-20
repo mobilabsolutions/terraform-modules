@@ -1,7 +1,7 @@
 ## Azure Virtual Machine Cluster
 Creates Azure Virtual Machine Cluster and connect all of the vm's to a Rancher Environment.
 
-`rancher/registration`, `azurerm/compute/cluster` and `rancher/host` modules will be used for this demo which will require configuration of `azurerm` and `rancher` providers. The `azurerm/compute/cluster`  is a special module that uses `azurerm/resource_group`, `azurerm/network/virtual_network`, `azurerm/network/subnet`, `azurerm/network/network_security_group`, `azurerm/load_balancer/public`, `azurerm/availability_set`, `azurerm/storage_account` and `azurerm/virtual_machine` to create a azure virtual machine cluster with all dependencies. More information about modules and provider can be found on their respective pages. 
+`rancher/environment`, `rancher/registration`, `azurerm/resource_group`, `azurerm/load_balancer/public`, `azurerm/network`, `azurerm/availability_set`, `azurerm/storage_account`, `azurerm/virtual_machine` and `rancher/host` modules will be used for this demo which will require configuration of `azurerm` and `rancher` providers. More information about modules and provider can be found on their respective pages. 
 
 We have created a vars.tf file to interpolate variable values with help of a terraform.tfvars file. More information about required variables can be obtained from module documentation and provider page. You have to create it by yourself and provide all values it requires. You can use terraform.tfvars.example file as a starting point. Also an example of terraform.tfvars file can be seen below.
 
@@ -35,11 +35,8 @@ load_balancing_rules = [
 count = "2"
 public_key_path = "..."
 subnet_name = "default"
-azure_sa_name = "..."
-azure_sa_key = "..."
 cloud_init_file = "rancherhost.conf"
 ssh_users_file = "sshusers"
-rancher_environment_id = "..."
 admin_username = "..."
 ```
 
