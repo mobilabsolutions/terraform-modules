@@ -1,0 +1,13 @@
+azure_subscription_id = ""
+azure_client_id       = ""
+azure_client_secret   = ""
+azure_tenant_id       = ""
+name = "testmysqlserver"
+location = "West Europe"
+administrator_login = ""
+administrator_login_password = ""
+ssl_enforcement = "Disabled"
+storage_mb = "51200"
+sql_firewall_rules = [
+  "all,0.0.0.0,255.255.255.255",
+  ]
