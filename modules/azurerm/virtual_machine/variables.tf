@@ -17,6 +17,7 @@ variable location {
 variable count {
   type        = "string"
   description = "(Required) Number of VMs to provision."
+  default     = "1"
 }
 
 variable count_offset {

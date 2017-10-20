@@ -1,7 +1,7 @@
 ## Azure Single Virtual Machine with Rancher Server
 Creates an Azure Virtual Machine and installs Rancher Server on it. Rancher Server uses an Azure Storage Account to store data.
 
-`azurerm/compute/single` module will be used for this demo which will require configuration of `azurerm` provider. The `azurerm/compute/single` is a special module that uses `azurerm/resource_group`, `azurerm/network/virtual_network`, `azurerm/network/subnet`, `azurerm/network/network_security_group`, `azurerm/storage_account` and `azurerm/virtual_machine` to create a single azure virtual machine instance with all dependencies. More information about modules and provider can be found on their respective pages. 
+`azurerm/resource_group`, `azurerm/network`, `azurerm/storage_account` and `azurerm/virtual_machine` modules will be used for this demo which will require configuration of `azurerm` provider. More information about modules and provider can be found on their respective pages. 
 
 We have created a vars.tf file to interpolate variable values with help of a terraform.tfvars file. More information about required variables can be obtained from module documentation and provider page. You have to create it by yourself and provide all values it requires. You can use terraform.tfvars.example file as a starting point. Also an example of terraform.tfvars file can be seen below.
 
@@ -25,8 +25,6 @@ network_security_rules = [
   ]
 public_key_path = "..."
 subnet_name = "default"
-azure_sa_name = "testrancherstoragesa"
-azure_sa_key = "..."
 cloud_init_file = "rancherserver.conf"
 ssh_users_file = "sshusers"
 ```
@@ -49,7 +47,6 @@ vm_public_ip | Virtual machine public ip. | string
 vm_public_dns | Virtual machine public dns. | string
 vm_private_ip | Virtual machine private ip. | string
 vm_private_dns | Virtual machine private dns. | string
-rancher_url  | Rancher server url | string
 
 
 ### Instructions
