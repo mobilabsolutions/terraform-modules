@@ -23,7 +23,7 @@ variable "location" {
 }
 
 variable address_space {
-  type        = "string"
+  type = "string"
 }
 
 variable "subnets" {
