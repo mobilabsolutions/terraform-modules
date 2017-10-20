@@ -23,7 +23,7 @@ variable "location" {
 }
 
 variable sql_server_version {
-  type        = "string"
+  type = "string"
 }
 
 variable administrator_login {
@@ -45,7 +45,7 @@ variable rule_list {
 }
 
 variable sql_database_edition {
-  type        = "string"
+  type = "string"
 }
 
 variable requested_service_objective_name {

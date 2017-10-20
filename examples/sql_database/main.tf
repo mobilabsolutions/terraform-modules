@@ -12,7 +12,7 @@ module "resource_group" {
 }
 
 module "sql_server" {
-  source              		   = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/sql/server"
+  source                       = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/sql/server"
   name                         = "${var.name}"
   resource_group_name          = "${module.resource_group.name}"
   location                     = "${var.location}"
@@ -23,7 +23,7 @@ module "sql_server" {
 }
 
 module "create_sql_db" {
-  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/sql/database/create"
+  source                           = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/sql/database/create"
   name                             = "${var.name}"
   resource_group_name              = "${module.resource_group.name}"
   location                         = "${var.location}"

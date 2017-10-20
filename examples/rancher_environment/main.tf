@@ -5,8 +5,8 @@ provider "rancher" {
 }
 
 module rancher_environment {
-  source                      = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/rancher/environment"
-  name                        = "${var.name}"
+  source = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/rancher/environment"
+  name   = "${var.name}"
 }
 
 module rancher_registry {
