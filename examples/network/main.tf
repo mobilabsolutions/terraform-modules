@@ -12,7 +12,7 @@ module "resource_group" {
 }
 
 module "network" {
-  source              		   = "./../../modules/azurerm/network"
+  source              		   = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/network"
   name                         = "${var.name}"
   resource_group_name          = "${module.resource_group.name}"
   location                     = "${var.location}"
