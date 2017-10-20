@@ -85,15 +85,15 @@ variable network_interface_subnet_name {
   default     = "default"
 }
 
+variable private_ip_address_allocation {
+  type        = "string"
+  description = "(Optional) IP assignment for the network interface. Can be static or dynamic: if using static please set private_ip_address"
+  default     = "dynamic"
+}
+
 #Public IP Specific Settings
 variable public_ip_tags {
   type        = "map"
   description = "(Optional) A mapping of tags to assign to the resource."
   default     = {}
-}
-
-variable private_ip_address_allocation {
-  type        = "string"
-  description = "(Optional) IP assignment for the network interface. Can be static or dynamic: if using static please set private_ip_address"
-  default     = "dynamic"
 }
