@@ -25,8 +25,12 @@ variable network_security_rules {
 }
 
 #Storage Account
-variable account_type {
-  default = "Standard_LRS"
+variable account_tier {
+  default = "Standard"
+}
+
+variable account_replication_type {
+  default = "LRS"
 }
 
 # Virtual Machine
@@ -34,11 +38,7 @@ variable public_key {
   type = "string"
 }
 
-variable cloud_init {
-  type = "string"
-}
-
-variable ssh_users {
+variable cloud_init_rendered {
   type = "string"
 }
 
@@ -84,24 +84,6 @@ variable os_disk_name {
   type = "string"
 
   default = "osdisk"
-}
-
-variable azure_sa_name {
-  type = "string"
-
-  default = ""
-}
-
-variable azure_sa_key {
-  type = "string"
-
-  default = ""
-}
-
-variable driver_version {
-  type = "string"
-
-  default = "v0.5.1"
 }
 
 variable tags {
