@@ -2,8 +2,11 @@
 Creates an azure network consisting of a Virtual Network and possibly multiple Network Interfaces with all of their dependencies.
 
 An Azure virtual network (VNet) is a representation of your own network in the cloud. It is a logical isolation of the Azure cloud dedicated to your subscription. You can fully control the IP address blocks, DNS settings, security policies, and route tables within this network. You can also connect Virtual Networks to your on-premises network. See [Virtual Network](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview).
+
 Each VNet might have multiple subnets. Subnets represent network segments within the IP space defined by the virtual network. Subnets have names unique within a VNET and they can be addressed via URIs.
+
 A Network Interface enables an Azure Virtual Machine to communicate with Internet, Azure, and on-premises resources. in order to setup a Network Interface you have associate it with a Virtual Network through a subnet. also you have to specify a Network Security Group.
+
 A Network Security Group (NSG) resource contains a list of network security rules. NSGs enable inbound or outbound traffic to be enabled or denied. NSGs are created with a set of default network security rules which are designed to enable all communications from and within a virtual network, but deny external access to same. NSGs can be assigned to subnets or individual NICs. Where NSGs are assigned to both a subnet and a NIC, the combination of both NSGs applies to that NIC.
 
 ### Example
