@@ -42,18 +42,6 @@ variable public_key_path {
   type = "string"
 }
 
-variable azure_sa_name {
-  type = "string"
-
-  default = ""
-}
-
-variable azure_sa_key {
-  type = "string"
-
-  default = ""
-}
-
 variable cloud_init_file {
   type = "string"
 }

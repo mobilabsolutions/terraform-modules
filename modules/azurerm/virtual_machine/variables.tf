@@ -17,6 +17,7 @@ variable location {
 variable count {
   type        = "string"
   description = "(Required) Number of VMs to provision."
+  default     = "1"
 }
 
 variable count_offset {
@@ -37,38 +38,15 @@ variable availability_set_id {
   default     = ""
 }
 
-variable subnet_ids {
-  type        = "map"
-  description = "(Required) Subnets for the network interface"
-}
-
-variable subnet_cidr {
-  type        = "string"
-  description = "(Required) CIDR of the Subnet for the network interface"
-}
-
-variable private_ip_address_allocation {
-  type        = "string"
-  description = "(Optional) IP assignment for the network interface. Can be static or dynamic: if using static please set private_ip_address"
-  default     = "dynamic"
-}
-
-variable private_ip_addresses {
-  type        = "list"
-  description = "(Optional) Private IP address for the network interface. Required if private_ip_address_allocation is static"
-  default     = [""]
-}
-
 variable network_security_group_id {
   type        = "string"
   description = "(Optional) Network security group id to attach to instance"
   default     = ""
 }
 
-variable "lb_pool_ids" {
+variable network_interface_ids {
   type        = "list"
-  description = "(Optional) Load balancer pool ids"
-  default     = [""]
+  description = "(Required) List of network network interface ids"
 }
 
 variable vm_size {
@@ -130,37 +108,9 @@ variable os_disk_name {
   default     = "osdisk"
 }
 
-variable cloud_init {
+variable cloud_init_rendered {
   type        = "string"
-  description = "(Required) cloud-init file contents"
-}
-
-variable ssh_users {
-  type        = "string"
-  description = "(Required) ssh users file contents"
-}
-
-variable azure_sa_name {
-  type        = "string"
-  description = "(Optional) Storage account name of Azure Storage Account which keeps Rancher data"
-  default     = ""
-}
-
-variable azure_sa_key {
-  type        = "string"
-  description = "(Optional) Storage account key of Azure Storage Account which keeps Rancher data"
-  default     = ""
-}
-
-variable driver_version {
-  type        = "string"
-  description = "(Optional) azurefile-driverdockervolume version. See https://github.com/Azure/azurefile-dockervolumedriver"
-  default     = "v0.5.1"
-}
-
-variable rancher_host {
-  type        = "string"
-  description = "(Optional) Rancher host connect command with rancher/agent"
+  description = "(Optional) Rendered cloud-init file contents"
   default     = ""
 }
 
