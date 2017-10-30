@@ -4,7 +4,7 @@ Create an Azure SQL Server.
 ### Example
 ```hcl
 module "sql_server" {
-  source                       = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/sql/server"
+  source                       = "github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/sql/server"
   name                         = "${var.sql_server_name}"
   resource_group_name          = "${var.resource_group_name}"
   location                     = "${var.location}"

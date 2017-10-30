@@ -9,7 +9,7 @@ When you deploy a VM in Azure, you are going to select a VM size within one of o
 ### Example
 ```hcl
 module "virtual_machine" {
-  source                        = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/virtual_machine"
+  source                        = "github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/virtual_machine"
   name                          = "${var.name}"
   location                      = "${var.location}"
   resource_group_name           = "${module.resource_group.name}"
