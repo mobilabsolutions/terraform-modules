@@ -4,7 +4,7 @@ Create an Azure MySQL Server.
 ### Example
 ```hcl
 module "mysql_server" {
-  source                       = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/mysql/server"
+  source                       = "github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/mysql/server"
   name                         = "${var.name}"
   resource_group_name          = "${var.resource_group_name}"
   location                     = "${var.location}"

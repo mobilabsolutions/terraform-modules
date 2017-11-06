@@ -6,7 +6,7 @@ Azure Database for MySQL is a relational database service based on the open sour
 ### Example
 ```hcl
 module "mysql_database" {
-  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/mysql/database"
+  source              = "github.com/mobilabsolutions/terraform-modules.git?ref=master//modules/azurerm/mysql/database"
   name                = "${var.name}"
   resource_group_name = "${var.resource_group_name}"
   server_name         = "${var.mysql_server_name}"
