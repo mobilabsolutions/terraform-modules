@@ -1,9 +1,9 @@
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault" "key_vault" {
-  name     = "${var.name}-kv"
-  location = "${var.location}"
-  tags     = "${var.tags}"
+  name                = "${var.name}-kv"
+  location            = "${var.location}"
+  tags                = "${var.tags}"
   resource_group_name = "${var.resource_group_name}"
 
   sku {
@@ -20,5 +20,4 @@ resource "azurerm_key_vault" "key_vault" {
 
     secret_permissions = "${var.secret_perms}"
   }
-
 }
