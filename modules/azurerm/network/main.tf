@@ -49,7 +49,7 @@ resource "azurerm_public_ip" "pi" {
   # Public IP Information
   name                         = "${lower(var.name)}-ip-vm-${format(var.count_format, var.count_offset + count.index + 1)}"
   domain_name_label            = "${lower(var.name)}-${format(var.count_format, var.count_offset + count.index + 1)}"
-  public_ip_address_allocation = "dynamic"
+  public_ip_address_allocation = "${var.public_ip_address_allocation}"
 
   tags = "${merge(var.public_ip_tags, map("resourceType", "pi"))}"
 }

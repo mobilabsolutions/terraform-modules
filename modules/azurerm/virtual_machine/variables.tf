@@ -109,9 +109,9 @@ variable os_disk_name {
 }
 
 variable cloud_init_rendered {
-  type        = "string"
-  description = "(Optional) Rendered cloud-init file contents"
-  default     = ""
+  type        = "list"
+  description = "(Optional) Rendered cloud-init file contents as list. Element count in the list should be one or should be equal to count variable."
+  default     = [""]
 }
 
 variable tags {

@@ -12,7 +12,7 @@ module "resource_group" {
 }
 
 module "network" {
-  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/network"
+  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.3.0//modules/azurerm/network"
   name                = "${var.name}"
   location            = "${var.location}"
   resource_group_name = "${module.resource_group.name}"
@@ -39,7 +39,7 @@ data "template_file" "init" {
 }
 
 module "virtual_machine" {
-  source                        = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/virtual_machine"
+  source                        = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.3.0//modules/azurerm/virtual_machine"
   name                          = "${var.name}"
   location                      = "${var.location}"
   resource_group_name           = "${module.resource_group.name}"
@@ -48,7 +48,7 @@ module "virtual_machine" {
   network_security_group_id     = "${module.network.network_security_group_id}"
   network_interface_ids         = "${module.network.network_interface_ids}"
   public_key                    = "${file(var.public_key_path)}"
-  cloud_init_rendered           = "${data.template_file.init.rendered}"
+  cloud_init_rendered           = "${list(data.template_file.init.rendered)}"
   admin_username                = "${var.admin_username}"
 }
 

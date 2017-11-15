@@ -32,8 +32,7 @@ resource "azurerm_virtual_machine" "vm" {
   os_profile {
     computer_name  = "${var.name}-${format(var.count_format, var.count_offset+count.index+1)}"
     admin_username = "${var.admin_username}"
-    admin_password = "${uuid()}"
-    custom_data    = "${var.cloud_init_rendered}"
+    custom_data    = "${length(var.cloud_init_rendered) == "1" ? element(var.cloud_init_rendered, 1) : element(var.cloud_init_rendered, count.index)}"
   }
 
   os_profile_linux_config {
