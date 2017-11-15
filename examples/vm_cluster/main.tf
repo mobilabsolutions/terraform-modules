@@ -37,7 +37,7 @@ module "load_balancer" {
 }
 
 module "network" {
-  source                        = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.3.0//modules/azurerm/network"
+  source                        = "github.com/mobilabsolutions/terraform-modules.git?ref=1.3.0//modules/azurerm/network"
   name                          = "${var.name}"
   location                      = "${var.location}"
   resource_group_name           = "${module.resource_group.name}"
@@ -74,7 +74,7 @@ data "template_file" "init" {
 }
 
 module "virtual_machine" {
-  source                        = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.3.0//modules/azurerm/virtual_machine"
+  source                        = "github.com/mobilabsolutions/terraform-modules.git?ref=1.3.0//modules/azurerm/virtual_machine"
   name                          = "${var.name}"
   location                      = "${var.location}"
   resource_group_name           = "${module.resource_group.name}"
