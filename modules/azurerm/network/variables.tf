@@ -91,6 +91,12 @@ variable private_ip_address_allocation {
   default     = "dynamic"
 }
 
+variable public_ip_address_allocation {
+  type        = "string"
+  description = "(Required) Defines whether the IP address is stable or dynamic. Options are Static or Dynamic."
+  default     = "dynamic"
+}
+
 #Public IP Specific Settings
 variable public_ip_tags {
   type        = "map"

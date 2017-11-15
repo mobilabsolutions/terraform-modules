@@ -15,21 +15,25 @@ output "virtual_network_name" {
 }
 
 output "public_ip_list" {
-  value = ["${azurerm_public_ip.pi.*.ip_address}"]
+  value = "${azurerm_public_ip.pi.*.ip_address}"
 }
 
 output "public_dns_list" {
-  value = ["${azurerm_public_ip.pi.*.fqdn}"]
+  value = "${azurerm_public_ip.pi.*.fqdn}"
 }
 
 output "private_ip_list" {
-  value = ["${azurerm_network_interface.ni.*.private_ip_address}"]
+  value = "${azurerm_network_interface.ni.*.private_ip_address}"
 }
 
 output "private_dns_list" {
-  value = ["${azurerm_network_interface.ni.*.internal_fqdn}"]
+  value = "${azurerm_network_interface.ni.*.internal_fqdn}"
 }
 
 output "network_interface_ids" {
-  value = ["${azurerm_network_interface.ni.*.id}"]
+  value = "${azurerm_network_interface.ni.*.id}"
+}
+
+output "public_ip_name_list" {
+  value = "${azurerm_public_ip.pi.*.name}"
 }

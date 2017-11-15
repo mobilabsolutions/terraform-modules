@@ -37,7 +37,7 @@ module "load_balancer" {
 }
 
 module "network" {
-  source                        = "github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/network"
+  source                        = "github.com/mobilabsolutions/terraform-modules.git?ref=1.3.0//modules/azurerm/network"
   name                          = "${var.name}"
   location                      = "${var.location}"
   resource_group_name           = "${module.resource_group.name}"
@@ -74,7 +74,7 @@ data "template_file" "init" {
 }
 
 module "virtual_machine" {
-  source                        = "github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/virtual_machine"
+  source                        = "github.com/mobilabsolutions/terraform-modules.git?ref=1.3.0//modules/azurerm/virtual_machine"
   name                          = "${var.name}"
   location                      = "${var.location}"
   resource_group_name           = "${module.resource_group.name}"
@@ -85,7 +85,7 @@ module "virtual_machine" {
   network_interface_ids         = "${module.network.network_interface_ids}"
   availability_set_id           = "${module.availability_set.id}"
   public_key                    = "${file(var.public_key_path)}"
-  cloud_init_rendered           = "${data.template_file.init.rendered}"
+  cloud_init_rendered           = "${list(data.template_file.init.rendered)}"
   admin_username                = "${var.admin_username}"
 }
 
