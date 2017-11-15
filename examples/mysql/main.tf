@@ -6,13 +6,13 @@ provider "azurerm" {
 }
 
 module "resource_group" {
-  source   = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/resource_group"
+  source   = "github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/resource_group"
   name     = "${var.name}"
   location = "${var.location}"
 }
 
 module "mysql_server" {
-  source                       = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/mysql/server"
+  source                       = "github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/mysql/server"
   name                         = "${var.name}"
   resource_group_name          = "${module.resource_group.name}"
   location                     = "${var.location}"
@@ -24,7 +24,7 @@ module "mysql_server" {
 }
 
 module "mysql_database" {
-  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/mysql/database"
+  source              = "github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/mysql/database"
   name                = "${var.name}"
   resource_group_name = "${module.resource_group.name}"
   server_name         = "${module.mysql_server.name}"

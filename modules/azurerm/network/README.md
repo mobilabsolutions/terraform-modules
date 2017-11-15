@@ -12,7 +12,7 @@ A Network Security Group (NSG) resource contains a list of network security rule
 ### Example
 ```hcl
 module "virtual_network" {
-  source                        = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/network/virtual_network"
+  source                        = "github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/network/virtual_network"
   name                          = "${var.name}"
   resource_group_name           = "${module.resource_group.name}"
   location                      = "${var.location}"

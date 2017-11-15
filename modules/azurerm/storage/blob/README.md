@@ -6,7 +6,7 @@ Blob Storage stores unstructured object data. A blob can be any type of text or 
 ### Example
 ```hcl
 module "blob_storage" {
-  source                = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/storage/blob"
+  source                = "github.com/mobilabsolutions/terraform-modules.git?ref=1.1.0//modules/azurerm/storage/blob"
   name                  = "${var.name}"
   resource_group_name   = "${var.resource_group_name}"
   storage_account_name  = "${var.storage_account_name}"

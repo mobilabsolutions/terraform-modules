@@ -1,12 +1,12 @@
 module "resource_group" {
-  source   = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/resource_group"
+  source   = "github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/resource_group"
   name     = "${var.name}"
   location = "${var.location}"
   tags     = "${var.tags}"
 }
 
 module "load_balancer" {
-  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/load_balancer/public"
+  source              = "github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/load_balancer/public"
   name                = "${var.name}"
   location            = "${var.location}"
   resource_group_name = "${module.resource_group.name}"
@@ -15,7 +15,7 @@ module "load_balancer" {
 }
 
 module "network" {
-  source                 = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/network"
+  source                 = "github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/network"
   name                   = "${var.name}"
   location               = "${var.location}"
   resource_group_name    = "${module.resource_group.name}"
@@ -30,13 +30,13 @@ module "network" {
 }
 
 module "availability_set" {
-  source              = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/availability_set"
+  source              = "github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/availability_set"
   name                = "${var.name}"
   resource_group_name = "${module.resource_group.name}"
 }
 
 module "storage_account" {
-  source                   = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/storage/account"
+  source                   = "github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/storage/account"
   account_name             = "${var.name}"
   location                 = "${var.location}"
   account_tier             = "${var.account_tier}"
@@ -46,7 +46,7 @@ module "storage_account" {
 }
 
 module "virtual_machine" {
-  source                        = "git::ssh://git@github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/virtual_machine"
+  source                        = "github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/virtual_machine"
   name                          = "${var.name}"
   location                      = "${var.location}"
   resource_group_name           = "${module.resource_group.name}"
