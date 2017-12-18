@@ -29,7 +29,7 @@ module "resource_group" {
 }
 
 module "load_balancer" {
-  source              = "github.com/mobilabsolutions/terraform-modules.git?ref=1.2.0//modules/azurerm/load_balancer/public"
+  source              = "github.com/mobilabsolutions/terraform-modules.git?ref=1.3.1//modules/azurerm/load_balancer/public"
   name                = "${var.name}"
   location            = "${var.location}"
   resource_group_name = "${module.resource_group.name}"
@@ -119,8 +119,4 @@ output lb_public_ip {
 
 output lb_public_dns {
   value = "${module.load_balancer.dns_address}"
-}
-
-output lb_private_ip {
-  value = "${module.load_balancer.private_ip_address}"
 }

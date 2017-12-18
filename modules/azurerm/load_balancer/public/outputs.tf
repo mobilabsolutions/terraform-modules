@@ -10,6 +10,6 @@ output "backend_pool_id" {
   value = "${azurerm_lb_backend_address_pool.bp.id}"
 }
 
-output "private_ip_address" {
-  value = "${azurerm_lb.lb.private_ip_address}"
-}
+# output "private_ip_address" {
+#   value = "${azurerm_lb.lb.private_ip_address}"
+# }
