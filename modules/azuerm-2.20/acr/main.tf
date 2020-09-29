@@ -1,0 +1,20 @@
+terraform {
+  backend "azurerm" {
+    storage_account_name = "${var.resource_group_name}tfstate"
+    container_name       = "tfstate"
+    key                  = "infrastructure/acr/terraform.tfstate"
+  }
+}
+
+data "azurerm_resource_group" "this" {
+  name = var.resource_group_name
+}
+
+resource "azurerm_container_registry" "this" {
+  name                = "${var.name_prefix}acr"
+  resource_group_name = data.azurerm_resource_group.this.name
+  location            = data.azurerm_resource_group.this.location
+  admin_enabled       = var.admin_enabled
+  sku                 = var.sku
+  tags                = var.tags
+}
