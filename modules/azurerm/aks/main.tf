@@ -2,14 +2,6 @@ provider "azuread" {
   version = "=0.10.0"
 }
 
-terraform {
-  backend "azurerm" {
-    storage_account_name = "${var.resource_group_name}tfstate"
-    container_name       = "tfstate"
-    key                  = "infrastructure/aks/terraform.tfstate"
-  }
-}
-
 data "azurerm_client_config" "current" {}
 
 data "azurerm_resource_group" "this" {

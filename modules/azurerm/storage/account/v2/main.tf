@@ -1,11 +1,3 @@
-terraform {
-  backend "azurerm" {
-    storage_account_name = "${var.resource_group_name}tfstate"
-    container_name       = "tfstate"
-    key                  = "infrastructure/storage/terraform.tfstate"
-  }
-}
-
 data "azurerm_resource_group" "this" {
   name = var.resource_group_name
 }
