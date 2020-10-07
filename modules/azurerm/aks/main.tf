@@ -1,3 +1,7 @@
+provider "azurerm" {
+  version = "=1.34.0"
+}
+
 provider "azuread" {
   version = "=0.10.0"
 }
@@ -52,14 +56,14 @@ resource "azurerm_kubernetes_cluster" "this" {
     }
   }
 
-  default_node_pool {
-    name            = "defaulpool"
+  agent_pool_profile {
+    name            = "agentpool"
+    count           = var.node_count
     vm_size         = var.vm_size
-    max_pods        = 100
+    os_type         = "Linux"
     os_disk_size_gb = 30
-    node_count      = var.node_count
+    max_pods        = 100
     vnet_subnet_id  = var.subnet_id
-    type            = "VirtualMachineScaleSets"
   }
 
   service_principal {
@@ -80,13 +84,9 @@ resource "azurerm_kubernetes_cluster" "this" {
 
   network_profile {
     network_plugin     = "azure"
-    load_balancer_sku  = "Standard"
     service_cidr       = var.service_cidr
     dns_service_ip     = var.dns_service_ip
     docker_bridge_cidr = var.docker_bridge_cidr
-    load_balancer_profile {
-      outbound_ip_address_ids = [azurerm_public_ip.this.id]
-    }
   }
 
   addon_profile {
@@ -96,8 +96,7 @@ resource "azurerm_kubernetes_cluster" "this" {
     }
   }
 
-  tags       = var.tags
-  depends_on = [azurerm_public_ip.this]
+  tags = var.tags
 }
 
 # Create Public Ip for Load Balancer
@@ -105,7 +104,6 @@ resource "azurerm_public_ip" "this" {
   name                = "${var.resource_group_name}-ip"
   location            = data.azurerm_resource_group.this.location
   resource_group_name = data.azurerm_resource_group.this.name
-  sku                 = "Standard"
   allocation_method   = "Static"
   domain_name_label   = var.resource_group_name
   tags                = var.tags

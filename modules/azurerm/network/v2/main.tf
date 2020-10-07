@@ -1,3 +1,9 @@
+provider "azurerm" {
+  version = "=2.20.0"
+  features {}
+}
+
+
 data "azurerm_resource_group" "this" {
   name = var.resource_group_name
 }
