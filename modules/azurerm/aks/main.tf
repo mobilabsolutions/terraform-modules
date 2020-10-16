@@ -1,10 +1,14 @@
-provider "azurerm" {
-  version = "=2.20.0"
-  features {}
-}
-
-provider "azuread" {
-  version = "=0.10.0"
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=2.20.0"
+    }
+    azuread = {
+      source  = "hashicorp/azuread"
+      version = "=0.10.0"
+    }
+  }
 }
 
 data "azurerm_client_config" "current" {}
@@ -85,13 +89,9 @@ resource "azurerm_kubernetes_cluster" "this" {
 
   network_profile {
     network_plugin     = "azure"
-    load_balancer_sku  = "Standard"
     service_cidr       = var.service_cidr
     dns_service_ip     = var.dns_service_ip
     docker_bridge_cidr = var.docker_bridge_cidr
-    load_balancer_profile {
-      outbound_ip_address_ids = [azurerm_public_ip.this.id]
-    }
   }
 
   addon_profile {
@@ -102,16 +102,4 @@ resource "azurerm_kubernetes_cluster" "this" {
   }
 
   tags       = var.tags
-  depends_on = [azurerm_public_ip.this]
-}
-
-# Create Public Ip for Load Balancer
-resource "azurerm_public_ip" "this" {
-  name                = "${var.resource_group_name}-ip"
-  location            = data.azurerm_resource_group.this.location
-  resource_group_name = data.azurerm_resource_group.this.name
-  sku                 = "Standard"
-  allocation_method   = "Static"
-  domain_name_label   = var.resource_group_name
-  tags                = var.tags
 }
