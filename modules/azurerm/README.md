@@ -2,7 +2,7 @@
 These are modules we use to handle common tasks on Microsoft Azure. 
 
 ### Prerequisites
-To be able to interact with Microsoft Azure resources, credentials are needed. Below steps will help obtaning these credentials.
+To be able to interact with Microsoft Azure resources, credentials are needed. Below steps will help obtain these credentials.
   1. Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
   2. Follow [these](https://www.terraform.io/docs/providers/azurerm/index.html#creating-credentials) instructions to create Azure credentials.
 

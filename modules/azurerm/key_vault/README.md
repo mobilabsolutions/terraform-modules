@@ -22,10 +22,10 @@ name | (Required) The name of the key vault. Must be unique on your Azure subscr
 location | (Required) The location where the key vault should be created. For a list of all Azure locations, please consult this [link](https://azure.microsoft.com/en-us/regions/) | string 
 key_perms | (Optional) List of key operations client can perform. must be one or more from the following: backup, create, decrypt, delete, encrypt, get, import, list, purge, recover, restore, sign, unwrapKey, update, verify and wrapKey. Defaults to all but update & purge. | list
 secret_perms | (Optional) List of secret operations client can perform. Must be one or more form the following: backup, delete, get, list, purge, recover, restore and set. Defaults to all but purge.
-sku | (Optional) Specifies service tier. standard or premium. Default is standard.| string
+sku_name | (Optional) Specifies service tier. standard or premium. Default is standard.| string
 tags | (Optional) A mapping of tags to assign to the resource. | map
 
-Default values will be overriden if they are provided as input variables. Usually variables marked as (Required) does not have default values. Check variables.tf file for more information.
+Default values will be overridden if they are provided as input variables. Usually variables marked as (Required) does not have default values. Check variables.tf file for more information.
 
 
 #### Output Reference
