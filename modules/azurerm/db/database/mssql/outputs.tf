@@ -1,7 +1,7 @@
-output id {
-  value = azurerm_sql_database.sql_db.id
+output "id" {
+  value = azurerm_mssql_database.mssql_db.id
 }
 
-output creation_date {
-  value = azurerm_sql_database.sql_db.creation_date
+output "name" {
+  value = azurerm_mssql_database.mssql_db.name
 }

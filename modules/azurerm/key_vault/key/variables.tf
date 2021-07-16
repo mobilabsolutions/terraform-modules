@@ -1,19 +1,26 @@
-variable name {
-  type        = "string"
+variable "name" {
+  type        = string
   description = "(Required) Specifies the name of the key. Changing this forces a new resource to be created."
 }
 
-variable key_type {
-  type        = "string"
-  description = "(Required) Specifies the Key Type to use for this Key Vault Key. Possible values are EC (Elliptic Curve), Oct (Octet), RSA and RSA-HSM."
+variable "resource_group_name" {
+  type        = string
+  description = "(Required) The name of the resource group in which to create the key vault."
 }
 
-variable vault_uri {
-  type        = "string"
-  description = "(Required) Specifies the URI used to access the Key Vault instance, available on the azurerm_key_vault resource."
+variable "key_vault_name" {
+  type        = string
+  description = "The name of the Key Vault."
 }
 
-variable key_opts {
-  type        = "list"
-  description = "(Required) list of JSON web key operations. Possible values include: decrypt, encrypt, sign, unwrapKey, verify and wrapKey."
+variable "key_size" {
+  type        = number
+  description = "Specifies the Size of the RSA key to create in bytes."
+  default     = 2048
+}
+
+variable "key_opts" {
+  type        = list(string)
+  description = "List of JSON web key operations. Possible values include: decrypt, encrypt, sign, unwrapKey, verify and wrapKey."
+  default     = ["encrypt", "decrypt", "sign", "verify", "wrapKey", "unwrapKey"]
 }
