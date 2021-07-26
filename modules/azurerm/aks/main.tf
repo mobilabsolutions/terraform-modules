@@ -23,16 +23,18 @@ data "azuread_service_principal" "this" {
 
 # Create Log Analytics Workspace
 resource "azurerm_log_analytics_workspace" "this" {
-  name                = "${var.name_prefix}-${var.log_analytics_ws_name}"
+  count               = var.log_analytics_enabled ? 1 : 0
+  name                = "${var.name_prefix}-${var.log_analytics_workspace_name}"
   resource_group_name = data.azurerm_resource_group.this.name
   location            = data.azurerm_resource_group.this.location
   sku                 = var.log_analytics_workspace_sku
-  retention_in_days   = var.retention_in_days
+  retention_in_days   = var.log_analytics_workspace_retention_in_days
   tags                = var.tags
 }
 
 # Create Log Analytics Solution
 resource "azurerm_log_analytics_solution" "this" {
+  count                 = var.log_analytics_enabled ? 1 : 0
   solution_name         = "ContainerInsights"
   resource_group_name   = data.azurerm_resource_group.this.name
   location              = data.azurerm_resource_group.this.location
@@ -99,8 +101,8 @@ resource "azurerm_kubernetes_cluster" "this" {
 
   addon_profile {
     oms_agent {
-      enabled                    = true
-      log_analytics_workspace_id = azurerm_log_analytics_workspace.this.id
+      enabled                    = var.log_analytics_enabled
+      log_analytics_workspace_id = var.log_analytics_enabled ? azurerm_log_analytics_workspace.this.id : null
     }
   }
 

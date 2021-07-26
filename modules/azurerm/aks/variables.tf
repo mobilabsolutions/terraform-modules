@@ -8,9 +8,27 @@ variable "resource_group_name" {
   description = "The resource group name."
 }
 
-variable "log_analytics_ws_name" {
+variable "log_analytics_enabled" {
+  type        = bool
+  description = "Whether Log Analytics should be configured for the cluster or not."
+  default     = false
+}
+
+variable "log_analytics_workspace_name" {
   type        = string
   description = "The log analytics workspace name."
+}
+
+variable "log_analytics_workspace_retention_in_days" {
+  type        = number
+  default     = 30
+  description = "The workspace data retention in days. Possible values range between 30 and 730."
+}
+
+variable "log_analytics_workspace_sku" {
+  type        = string
+  default     = "PerGB2018"
+  description = "Specifies the Sku of the Log Analytics Workspace."
 }
 
 variable "subnet_id" {
@@ -27,18 +45,6 @@ variable "kubernetes_version" {
   type        = string
   description = "Version of Kubernetes specified when creating the AKS managed cluster."
   default     = null
-}
-
-variable "retention_in_days" {
-  type        = number
-  default     = 30
-  description = "The workspace data retention in days. Possible values range between 30 and 730."
-}
-
-variable "log_analytics_workspace_sku" {
-  type        = string
-  default     = "PerGB2018"
-  description = "Specifies the Sku of the Log Analytics Workspace."
 }
 
 variable "node_count" {
