@@ -102,7 +102,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   addon_profile {
     oms_agent {
       enabled                    = var.log_analytics_enabled
-      log_analytics_workspace_id = var.log_analytics_enabled ? azurerm_log_analytics_workspace.this[count.index].id : null
+      log_analytics_workspace_id = var.log_analytics_enabled ? azurerm_log_analytics_workspace.this[0].id : null
     }
   }
 
