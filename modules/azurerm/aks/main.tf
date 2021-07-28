@@ -2,11 +2,11 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=2.33.0"
+      version = ">=2.67.0"
     }
     azuread = {
       source  = "hashicorp/azuread"
-      version = "=0.10.0"
+      version = ">=1.6.0"
     }
   }
 }
@@ -23,16 +23,18 @@ data "azuread_service_principal" "this" {
 
 # Create Log Analytics Workspace
 resource "azurerm_log_analytics_workspace" "this" {
-  name                = "${var.name_prefix}-${var.log_analytics_ws_name}"
+  count               = var.log_analytics_enabled ? 1 : 0
+  name                = "${var.name_prefix}-${var.log_analytics_workspace_name}"
   resource_group_name = data.azurerm_resource_group.this.name
   location            = data.azurerm_resource_group.this.location
   sku                 = var.log_analytics_workspace_sku
-  retention_in_days   = var.retention_in_days
+  retention_in_days   = var.log_analytics_workspace_retention_in_days
   tags                = var.tags
 }
 
 # Create Log Analytics Solution
 resource "azurerm_log_analytics_solution" "this" {
+  count                 = var.log_analytics_enabled ? 1 : 0
   solution_name         = "ContainerInsights"
   resource_group_name   = data.azurerm_resource_group.this.name
   location              = data.azurerm_resource_group.this.location
@@ -51,24 +53,24 @@ resource "azurerm_kubernetes_cluster" "this" {
   resource_group_name = data.azurerm_resource_group.this.name
   location            = data.azurerm_resource_group.this.location
   kubernetes_version  = var.kubernetes_version
-  dns_prefix          = var.resource_group_name
+  dns_prefix          = data.azurerm_resource_group.this.name
 
   linux_profile {
     admin_username = "ubuntu"
 
     ssh_key {
-      key_data = file("${var.ssh_public_key}")
+      key_data = file(var.ssh_public_key)
     }
   }
 
   default_node_pool {
     name            = "defaulpool"
     vm_size         = var.vm_size
-    max_pods        = 100
-    os_disk_size_gb = 30
+    max_pods        = var.max_pods
+    os_disk_size_gb = var.os_disk_size_gb
     node_count      = var.node_count
     vnet_subnet_id  = var.subnet_id
-    type            = "VirtualMachineScaleSets"
+    type            = var.node_pool_type
   }
 
   service_principal {
@@ -80,10 +82,13 @@ resource "azurerm_kubernetes_cluster" "this" {
     enabled = true
 
     azure_active_directory {
-      client_app_id     = var.client_app_id
-      server_app_id     = var.server_app_id
-      server_app_secret = var.server_app_secret
-      tenant_id         = data.azurerm_client_config.current.tenant_id
+      managed                = var.rbac_azuread_managed
+      admin_group_object_ids = var.rbac_azuread_managed == true ? var.admin_group_object_ids : null
+      azure_rbac_enabled     = var.rbac_azuread_managed == true ? true : null
+      client_app_id          = var.rbac_azuread_managed == false ? var.client_app_id : null
+      server_app_id          = var.rbac_azuread_managed == false ? var.server_app_id : null
+      server_app_secret      = var.rbac_azuread_managed == false ? var.server_app_secret : null
+      tenant_id              = data.azurerm_client_config.current.tenant_id
     }
   }
 
@@ -96,10 +101,10 @@ resource "azurerm_kubernetes_cluster" "this" {
 
   addon_profile {
     oms_agent {
-      enabled                    = true
-      log_analytics_workspace_id = azurerm_log_analytics_workspace.this.id
+      enabled                    = var.log_analytics_enabled
+      log_analytics_workspace_id = var.log_analytics_enabled ? azurerm_log_analytics_workspace.this.id : null
     }
   }
 
-  tags       = var.tags
+  tags = var.tags
 }
