@@ -38,8 +38,8 @@ resource "azurerm_log_analytics_solution" "this" {
   solution_name         = "ContainerInsights"
   resource_group_name   = data.azurerm_resource_group.this.name
   location              = data.azurerm_resource_group.this.location
-  workspace_resource_id = azurerm_log_analytics_workspace.this.id
-  workspace_name        = azurerm_log_analytics_workspace.this.name
+  workspace_resource_id = azurerm_log_analytics_workspace.this[count.index].id
+  workspace_name        = azurerm_log_analytics_workspace.this[count.index].name
 
   plan {
     publisher = "Microsoft"
@@ -102,7 +102,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   addon_profile {
     oms_agent {
       enabled                    = var.log_analytics_enabled
-      log_analytics_workspace_id = var.log_analytics_enabled ? azurerm_log_analytics_workspace.this.id : null
+      log_analytics_workspace_id = var.log_analytics_enabled ? azurerm_log_analytics_workspace.this[count.index].id : null
     }
   }
 
