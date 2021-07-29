@@ -102,16 +102,19 @@ variable "admin_group_object_ids" {
 variable "client_app_id" {
   type        = string
   description = "Azure AD Service Account Client Id for Client Application."
+  default     = null
 }
 
 variable "server_app_id" {
   type        = string
   description = "Azure AD Service Account Client Id for Server Application."
+  default     = null
 }
 
 variable "server_app_secret" {
   type        = string
   description = "Azure AD Service Account Client Secret for Server Application."
+  default     = null
 }
 
 variable "service_cidr" {
