@@ -12,7 +12,7 @@ data "azurerm_resource_group" "this" {
 }
 
 resource "azurerm_virtual_network" "this" {
-  name                = "${var.name_prefix}-vnet"
+  name                = "${var.name_prefix}${var.virtual_network_name}"
   location            = data.azurerm_resource_group.this.location
   resource_group_name = data.azurerm_resource_group.this.name
   address_space       = var.address_spaces
@@ -20,7 +20,7 @@ resource "azurerm_virtual_network" "this" {
 }
 
 resource "azurerm_subnet" "this" {
-  name                 = "${var.name_prefix}-subnet"
+  name                 = "${var.name_prefix}${var.subnet_name}"
   resource_group_name  = data.azurerm_resource_group.this.name
   virtual_network_name = azurerm_virtual_network.this.name
   address_prefixes     = var.subnet_address_prefixes

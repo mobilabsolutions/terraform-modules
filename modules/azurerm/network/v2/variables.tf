@@ -3,6 +3,18 @@ variable "name_prefix" {
   description = "The name prefix for the resource."
 }
 
+variable "virtual_network_name" {
+  type        = string
+  description = "The name of the virtual network."
+  default     = "vnet"
+}
+
+variable "subnet_name" {
+  type        = string
+  description = "The name of the subnet."
+  default     = "subnet"
+}
+
 variable "resource_group_name" {
   type        = string
   description = "The resource group name."
