@@ -3,6 +3,12 @@ variable "name_prefix" {
   description = "The name prefix for the resource."
 }
 
+variable "kubernetes_cluster_name" {
+  type        = string
+  description = "The name of the kubernetes cluster."
+  default     = "aks"
+}
+
 variable "resource_group_name" {
   type        = string
   description = "The resource group name."
@@ -17,6 +23,7 @@ variable "log_analytics_enabled" {
 variable "log_analytics_workspace_name" {
   type        = string
   description = "The log analytics workspace name."
+  default     = "law"
 }
 
 variable "log_analytics_workspace_retention_in_days" {

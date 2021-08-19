@@ -24,7 +24,7 @@ data "azuread_service_principal" "this" {
 # Create Log Analytics Workspace
 resource "azurerm_log_analytics_workspace" "this" {
   count               = var.log_analytics_enabled ? 1 : 0
-  name                = "${var.name_prefix}-${var.log_analytics_workspace_name}"
+  name                = "${var.name_prefix}${var.log_analytics_workspace_name}"
   resource_group_name = data.azurerm_resource_group.this.name
   location            = data.azurerm_resource_group.this.location
   sku                 = var.log_analytics_workspace_sku
@@ -49,7 +49,7 @@ resource "azurerm_log_analytics_solution" "this" {
 
 # Create Kubernetes Cluster
 resource "azurerm_kubernetes_cluster" "this" {
-  name                = "${var.name_prefix}-aks"
+  name                = "${var.name_prefix}${var.kubernetes_cluster_name}"
   resource_group_name = data.azurerm_resource_group.this.name
   location            = data.azurerm_resource_group.this.location
   kubernetes_version  = var.kubernetes_version
