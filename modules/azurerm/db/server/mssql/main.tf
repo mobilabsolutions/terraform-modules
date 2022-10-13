@@ -19,6 +19,7 @@ resource "azurerm_mssql_server" "mssql_server" {
   administrator_login          = var.administrator_login
   administrator_login_password = var.administrator_login_password
   tags                         = var.tags
+  minimum_tls_version          = "1.2"
 }
 
 resource "azurerm_mssql_firewall_rule" "mssql_firewall_rule" {
