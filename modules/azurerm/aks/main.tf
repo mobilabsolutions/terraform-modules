@@ -62,6 +62,10 @@ resource "azurerm_kubernetes_cluster" "this" {
       key_data = file(var.ssh_public_key)
     }
   }
+  lifecycle {
+    ignore_changes=[linux_profile]
+  }
+
 
   default_node_pool {
     name            = "defaulpool"
